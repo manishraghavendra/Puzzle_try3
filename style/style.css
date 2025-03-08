@@ -1,0 +1,487 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Serif TC", serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.img-fluid {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+}
+
+.img-fluid::after {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.img-fluid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: -50px 0px 0px 0px;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: 999;
+}
+
+.puzzle-title {
+  font-size: 36px;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  z-index: 999;
+  -webkit-transform: translateY(-80px);
+          transform: translateY(-80px);
+}
+
+.puzzle-title.move-in {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+
+button {
+  outline: none;
+  z-index: 99999;
+}
+
+.btn-primary {
+  -webkit-transform: translateY(200px);
+          transform: translateY(200px);
+}
+
+.btn-primary,
+.btn-secondary {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 350px;
+  padding: 16px 0;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  font-family: "Noto Serif TC", serif;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  z-index: 99999;
+}
+
+.btn-primary.move-in,
+.btn-secondary.move-in {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.puzzles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 540px;
+  height: 540px;
+  border: 1px solid transparent;
+  position: relative;
+  background-size: cover;
+  -webkit-transform: translateX(calc(100% - 540px));
+          transform: translateX(calc(100% - 540px));
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: 999;
+}
+
+.puzzles.puzzles-move {
+  -webkit-animation: move 1.2s forwards;
+          animation: move 1.2s forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+.puzzles.puzzles-glow {
+  border: 1px solid white;
+  -webkit-box-shadow: 0px 0px 30px 0px white;
+          box-shadow: 0px 0px 30px 0px white;
+}
+
+.puzzles.puzzles-glow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 540px;
+  height: 540px;
+  border: 1px solid white;
+  z-index: 9999;
+  -webkit-animation: glow 1.2s 3;
+          animation: glow 1.2s 3;
+}
+
+.puzzles.puzzles-glow::before {
+  content: "";
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -8px;
+  left: -8px;
+  width: 556px;
+  height: 556px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+  -webkit-animation: glow 1.2s 3;
+          animation: glow 1.2s 3;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.puzzles-imgs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1240px;
+  width: 100%;
+  height: 540px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  list-style: none;
+}
+
+.puzzles-imgs .puzzles-random {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  -webkit-transition: left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+  transition: left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+  transition: transform 2s ease-in-out, left 0.5s, top 0.5s, right 0.5s;
+  transition: transform 2s ease-in-out, left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+  cursor: pointer;
+  z-index: 9999;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(1) {
+  position: relative;
+  top: 35%;
+  right: 0%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(2) {
+  position: relative;
+  top: -3%;
+  left: -5%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(3) {
+  position: relative;
+  top: 72%;
+  right: 21%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(4) {
+  position: relative;
+  top: 15%;
+  left: 47%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(5) {
+  position: relative;
+  top: 2%;
+  left: 15%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(6) {
+  position: relative;
+  top: 85%;
+  right: 0%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(7) {
+  position: relative;
+  top: -10%;
+  left: 16%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(8) {
+  position: relative;
+  top: 4%;
+  left: 73%;
+}
+
+.puzzles-imgs .puzzles-random:nth-child(9) {
+  position: relative;
+  top: -2%;
+  left: 40%;
+}
+
+.puzzles-imgs .puzzles-random.gather {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.puzzles-imgs .puzzles-random .invisible {
+  display: none;
+}
+
+.puzzles-img {
+  cursor: pointer;
+}
+
+
+.puzzle-item {
+  list-style: none;
+  border: 1px solid transparent;
+  width: 33.3333%;
+  height: 33.3333%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 99999;
+  -webkit-transition: left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+  transition: left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+  transition: transform 2s ease-in-out, left 0.5s, top 0.5s, right 0.5s;
+  transition: transform 2s ease-in-out, left 0.5s, top 0.5s, right 0.5s, -webkit-transform 2s ease-in-out;
+}
+
+.puzzle-item.gather {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  -webkit-transform: rotate(360deg) scale(0.7);
+          transform: rotate(360deg) scale(0.7);
+  -webkit-animation: fadeOut 3s;
+          animation: fadeOut 3s;
+}
+
+.puzzle-item.correct {
+  -webkit-box-shadow: 0 1px 15px #f9fd88;
+          box-shadow: 0 1px 15px #f9fd88;
+}
+
+.puzzle-item.hovered {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.puzzle-item img {
+  position: absolute;
+}
+
+.puzzles-content {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 350px;
+  height: 540px;
+  margin: 0px 30px;
+  color: white;
+  opacity: 0;
+  position: absolute;
+  -webkit-transform: translateX(400px);
+          transform: translateX(400px);
+}
+
+.puzzles-content.show {
+  -webkit-animation: fadeIn 2s forwards;
+          animation: fadeIn 2s forwards;
+  -webkit-animation-delay: 4.5s;
+          animation-delay: 4.5s;
+}
+
+.puzzles-content.fade-out {
+  -webkit-animation: fadeOut 2s forwards;
+          animation: fadeOut 2s forwards;
+}
+
+.puzzles-content h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.puzzles-content h3 {
+  font-weight: 16;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.puzzles-content p {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.puzzles-content .btn-secondary {
+  margin-top: 15px;
+}
+
+@-webkit-keyframes move {
+  to {
+    -webkit-transform: translateX(-170px);
+            transform: translateX(-170px);
+  }
+}
+
+@keyframes move {
+  to {
+    -webkit-transform: translateX(-170px);
+            transform: translateX(-170px);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(275px);
+            transform: translateX(275px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(275px);
+            transform: translateX(275px);
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes glow {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.03);
+            transform: scale(1.03);
+  }
+}
+
+@keyframes glow {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.03);
+            transform: scale(1.03);
+  }
+}
+/*# sourceMappingURL=style.css.map */
